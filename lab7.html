@@ -1,0 +1,700 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>NA Software Development — Java Lab 7</title><style>
+:root{font-family:Inter,system-ui,sans-serif;color:#20324c;background:#f3f7fc}*{box-sizing:border-box}body{margin:0}button{font:inherit;cursor:pointer}aside{position:fixed;inset:0 auto 0 0;width:264px;background:#102b52;color:#edf5ff;padding:35px 24px}.logo{font-size:22px;font-weight:800;letter-spacing:-1px}.logo span{color:#86c7ff}aside small{display:block;color:#aac1df;margin:9px 0 45px}nav button{display:flex;justify-content:space-between;width:100%;border:0;background:transparent;color:#bdcee5;padding:16px 14px;text-align:left;border-radius:9px;margin:4px 0}nav button.active{background:#204b80;color:#d3eaff}nav button span{font-size:12px;opacity:.8}.aside-bottom{position:absolute;bottom:30px;font-size:12px;color:#aac1df;line-height:1.8}main{margin-left:264px;padding:32px 6vw;max-width:1450px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dae4f0;padding-bottom:26px;font-size:13px;color:#637895}.pill{background:#e5effc;padding:8px 13px;border-radius:30px;color:#315982}.intro{margin-top:46px}.eyebrow{color:#31649a;font-weight:700;font-size:11px;letter-spacing:2px}h1{font-size:38px;letter-spacing:-1.5px;margin:12px 0}p{color:#62758f;line-height:1.7}.topline{display:flex;align-items:center;justify-content:space-between;margin-top:34px;font-size:12px;color:#637895}.track{height:5px;background:#dce7f5;border-radius:10px;margin-top:12px;overflow:hidden}.bar{height:100%;background:#2877cb;transition:width .3s}.card{background:white;border:1px solid #dce5f1;border-radius:17px;margin-top:27px;padding:32px;box-shadow:0 8px 35px #183c7010}.tag{color:#346da8;font-size:11px;letter-spacing:1.5px;font-weight:700}h2{font-size:21px;margin:16px 0 8px;letter-spacing:-.4px}.hint{font-size:13px;margin:0 0 24px}.code{background:#142d50;border-radius:10px;padding:25px;color:#e7f1ff;font:17px/2.9 ui-monospace,monospace;overflow:auto;white-space:nowrap}.slot{background:#27486f;border:1px dashed #83a9d4;color:#e1efff;border-radius:6px;min-width:110px;min-height:37px;padding:2px 15px;font:inherit;line-height:1.7}.slot.focus{outline:2px solid #87c1ff}.bank{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.token{background:#f0f5fc;border:1px solid #d5e2f3;color:#254f7e;border-radius:7px;padding:10px 18px;font:15px ui-monospace,monospace}.token:hover{border-color:#2877cb;transform:translateY(-1px)}.actions{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #e7edf6;padding-top:24px;margin-top:28px}.primary{background:#1d65b5;color:#fff;border:0;padding:13px 22px;border-radius:8px;font-weight:600}.secondary{border:0;background:transparent;color:#5b7291;font-size:13px}.feedback{padding:15px;background:#e9f3ff;border-radius:8px;margin-top:20px;line-height:1.6;font-size:14px}.bottom{display:flex;gap:12px;margin-top:24px;color:#687e9b;font-size:12px;line-height:1.8}.bottom strong{color:#365c87}.score{font-size:58px;color:#1d65b5;margin:20px 0}.student-form{max-width:560px;margin-top:24px}.student-form label{display:block;font-weight:600;font-size:14px;margin-bottom:9px}.student-row{display:flex;gap:10px}.student-row input{width:100%;min-width:0;border:1px solid #b7cce5;border-radius:8px;padding:12px 14px;font:inherit;color:#20324c;background:white}.student-row input:focus{outline:2px solid #87c1ff;outline-offset:2px}.student-row button{white-space:nowrap}.student-form p{font-size:12px;margin:8px 0 0}nav button:disabled{opacity:.4;cursor:not-allowed}.review{border-top:1px solid #dae4f0;padding:16px 0}.review summary{cursor:pointer;font-weight:600;line-height:1.6}.review .code{margin-top:14px}.hidden{display:none}@media(max-width:760px){aside{position:relative;width:auto;padding:20px}.aside-bottom,aside small{display:none}nav{display:flex;overflow:auto;margin-top:15px}nav button{min-width:145px;padding:10px}main{margin:0;padding:24px 20px}header{padding-bottom:18px}.intro{margin-top:28px}h1{font-size:30px}.card{padding:22px}.code{padding:15px;font-size:14px}.slot{min-width:80px}header .pill{font-size:11px}}
+.teams-link{display:inline-block;background:#245fa8;color:#fff!important;text-decoration:none;font-size:14px;font-weight:600;padding:11px 16px;border:1px solid #8eb7e9;border-radius:8px;white-space:nowrap}.teams-link:hover{background:#174a89}.teams-link:focus-visible{outline:3px solid #86c7ff;outline-offset:3px}header{flex-wrap:wrap}.class-contact{flex-basis:100%;display:flex;flex-wrap:wrap;gap:8px 24px;font-size:13px;line-height:1.6}.class-contact span{overflow-wrap:anywhere}.official-brand{display:inline-flex;flex-shrink:0;background:white;padding:10px 15px;border-radius:8px}.official-brand img{display:block;width:108px;height:auto}header .official-brand img{width:80px}.official-brand:focus-visible{outline:3px solid #86c7ff;outline-offset:3px}header .header-contact{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}header .teacher-details{display:flex;flex-direction:column;align-items:flex-end;gap:3px;font-size:12px;line-height:1.6}header .teacher-details a{color:inherit;overflow-wrap:anywhere}.site-heading{font-size:clamp(20px,2.5vw,28px);font-weight:750;line-height:1.3;margin:0;flex:1}header .lab-heading{display:flex;flex-direction:column;gap:8px;flex:1}header .lab-heading small{font-size:12px}@media(max-width:760px){header .header-contact,header .teacher-details{align-items:flex-start}header .header-contact{width:100%}.site-heading{min-width:180px}}nav button{display:grid;grid-template-columns:24px minmax(0,1fr) 32px;column-gap:9px;align-items:start;min-height:58px;line-height:1.45}nav button .topic-number,nav button .topic-label{font-size:14px;opacity:1}nav button .topic-label{min-width:0;text-align:left;overflow-wrap:normal}nav button .topic-progress{font-size:12px;white-space:nowrap;text-align:right;line-height:1.7}aside{overflow-y:auto}.aside-bottom{position:static;margin-top:40px}@media(max-width:760px){nav button{min-width:215px;flex-shrink:0;grid-template-columns:24px minmax(0,1fr) 32px}}</style><aside><a class="official-brand" href="https://www.bife.ie/" target="_blank" rel="noopener noreferrer" aria-label="BIFE college website"><img src="assets/bife-logo.png" alt="Bray Institute of Further Education — BIFE" width="193" height="144"></a><div class="logo" style="margin-top:16px">Java practice</div><small>Java Lab 7</small><nav id="nav"></nav><div class="aside-bottom">BIFE · CIARA’S PRACTICE LAB<br>Learn by doing, one line at a time.</div></aside><main><header><div class="lab-heading"><h1 class="site-heading">Java Labs NA Software Development 2026–27</h1><small><a href="index.html" style="color:inherit">← All labs</a> / Lab 7</small></div><div class="header-contact"><div class="teacher-details"><span>Teacher: Ciara</span><a href="mailto:ciaraduffin@wicklowvec.ie">Email Ciara: ciaraduffin@wicklowvec.ie</a></div></div></header><div style="margin-top:20px"><a class="teams-link" href="tutorials/lab7.html" target="_blank" rel="noopener">Show tutorial · Lab 7 ↗</a></div><div class="intro"><div class="eyebrow">YOUR CODING JOURNEY STARTS HERE</div><h1>Small steps. Strong foundations.</h1><p>Practise arrays, loops, statistics, searching, tables, member objects and palindrome checks from our Lab 7 examples.</p><form class="student-form" onsubmit="event.preventDefault();saveStudentName()"><label for="student-name">Student name</label><div class="student-row"><input id="student-name" name="studentName" autocomplete="name" maxlength="80" placeholder="Enter your name" required><button class="primary" type="submit">Save name</button></div><p id="name-status" role="status">Add your name to personalise your quiz and results.</p></form></div><div class="topline"><span id="position"></span><span id="count"></span><button class="secondary" onclick="finish()">View results</button></div><div class="track"><div class="bar" id="bar"></div></div><section class="card" id="card"></section><div class="bottom"><span>✧</span><div><strong>Take your time. This is practice.</strong><br>Your progress is saved on this browser. Try again as often as you like.</div></div></main><script>
+const Q=[
+  [
+    "Array basics",
+    "Declare an array of whole numbers.",
+    [
+      "",
+      " numbers = {10, 20, 30};"
+    ],
+    [
+      "int[]"
+    ],
+    [
+      "int",
+      "String[]"
+    ],
+    "An int[] stores multiple integer values, accessed by index."
+  ],
+  [
+    "Array basics",
+    "Create storage for eight integers.",
+    [
+      "final int MAX = 8;<br>int[] myNumbers = new ",
+      "[MAX];"
+    ],
+    [
+      "int"
+    ],
+    [
+      "String",
+      "double"
+    ],
+    "TestArray creates eight int elements using new int[MAX]."
+  ],
+  [
+    "Array basics",
+    "Access the first car.",
+    [
+      "String[] cars = {\"ford\", \"Nissan\", \"BMW\", \"honda\"};<br>System.out.println(cars[",
+      "]); // ford"
+    ],
+    [
+      "0"
+    ],
+    [
+      "1",
+      "4"
+    ],
+    "Array indices start at zero."
+  ],
+  [
+    "Array basics",
+    "Predict the second dog count in TestArry.",
+    [
+      "int[] numOfDog = {1, 100, 48};<br>// numOfDog[1] is ",
+      ""
+    ],
+    [
+      "100"
+    ],
+    [
+      "1",
+      "48"
+    ],
+    "Index one refers to the second array element, 100."
+  ],
+  [
+    "Array basics",
+    "Read the fourth car.",
+    [
+      "String[] cars = {\"ford\", \"Nissan\", \"BMW\", \"honda\"};<br>System.out.println(cars[",
+      "]); // honda"
+    ],
+    [
+      "3"
+    ],
+    [
+      "4",
+      "2"
+    ],
+    "TestArry prints cars[3], which is honda."
+  ],
+  [
+    "Array basics",
+    "Get the number of car elements.",
+    [
+      "System.out.println(cars.",
+      ");"
+    ],
+    [
+      "length"
+    ],
+    [
+      "length()",
+      "size()"
+    ],
+    "Arrays expose length as a field, with no parentheses."
+  ],
+  [
+    "Array basics",
+    "Predict the initial value in a new int array.",
+    [
+      "int[] numbers = new int[3];<br>// numbers[0] initially contains ",
+      ""
+    ],
+    [
+      "0"
+    ],
+    [
+      "null",
+      "1"
+    ],
+    "Elements of a newly allocated int array are initialised to zero."
+  ],
+  [
+    "Loops & reverse",
+    "Visit every valid array index.",
+    [
+      "for (int index = 0; index ",
+      " numbers.length; index++) {<br>  System.out.println(numbers[index]);<br>}"
+    ],
+    [
+      "<"
+    ],
+    [
+      "<=",
+      ">"
+    ],
+    "The loop stops before length because the final valid index is length minus one."
+  ],
+  [
+    "Loops & reverse",
+    "Store the next input in the current array element.",
+    [
+      "myNumbers[",
+      "] = keyboard.nextInt();"
+    ],
+    [
+      "index"
+    ],
+    [
+      "MAX",
+      "myNumbers.length"
+    ],
+    "TestArray writes each input to the element selected by the loop index."
+  ],
+  [
+    "Loops & reverse",
+    "Begin reverse output at the last element.",
+    [
+      "for (int index = MAX ",
+      " 1; index >= 0; index--) {<br>  System.out.println(numbers[index]);<br>}"
+    ],
+    [
+      "-"
+    ],
+    [
+      "+",
+      "*"
+    ],
+    "Reverse starts at MAX - 1, the last valid index."
+  ],
+  [
+    "Loops & reverse",
+    "Move backwards through the array.",
+    [
+      "for (int index = MAX - 1; index >= 0; index",
+      ") {<br>  System.out.println(numbers[index]);<br>}"
+    ],
+    [
+      "--"
+    ],
+    [
+      "++",
+      "+=2"
+    ],
+    "Reverse decrements the index by one on each iteration."
+  ],
+  [
+    "Loops & reverse",
+    "Include the first element in reverse output.",
+    [
+      "for (int index = MAX - 1; index ",
+      " 0; index--) {<br>  System.out.println(numbers[index]);<br>}"
+    ],
+    [
+      ">="
+    ],
+    [
+      ">",
+      "<"
+    ],
+    "The >= comparison includes index zero."
+  ],
+  [
+    "Loops & reverse",
+    "Predict the first value printed in reverse.",
+    [
+      "int[] numbers = {4, 8, 12};<br>for (int index = numbers.length - 1; index >= 0; index--) {<br>  System.out.println(numbers[index]);<br>}<br>// first printed value: ",
+      ""
+    ],
+    [
+      "12"
+    ],
+    [
+      "4",
+      "8"
+    ],
+    "The loop begins at index two and prints the final element first."
+  ],
+  [
+    "Loops & reverse",
+    "Predict the array size after printing in reverse.",
+    [
+      "int[] numbers = {4, 8, 12};<br>// printing backwards changes no elements<br>// numbers.length is still ",
+      ""
+    ],
+    [
+      "3"
+    ],
+    [
+      "0",
+      "12"
+    ],
+    "Traversal order does not change the allocated array size."
+  ],
+  [
+    "Counts & statistics",
+    "Detect an odd array element.",
+    [
+      "if (myNumbers[index] % 2 ",
+      " 0) {<br>  noOfOdd++;<br>}"
+    ],
+    [
+      "!="
+    ],
+    [
+      "==",
+      "<"
+    ],
+    "TestArray counts values with a nonzero remainder after division by two."
+  ],
+  [
+    "Counts & statistics",
+    "Calculate the even count from the odd count.",
+    [
+      "int noOfEven = MAX ",
+      " noOfOdd;"
+    ],
+    [
+      "-"
+    ],
+    [
+      "+",
+      "*"
+    ],
+    "Every integer is odd or even, so subtract the odd count from the total."
+  ],
+  [
+    "Counts & statistics",
+    "Accumulate the sum of all elements.",
+    [
+      "sum = sum + myNumbers[",
+      "];"
+    ],
+    [
+      "index"
+    ],
+    [
+      "MAX",
+      "myNumbers.length"
+    ],
+    "The running sum adds the current element on each iteration."
+  ],
+  [
+    "Counts & statistics",
+    "Keep the average as floating-point division.",
+    [
+      "double average = (",
+      ") sum / MAX;"
+    ],
+    [
+      "double"
+    ],
+    [
+      "int",
+      "char"
+    ],
+    "Casting sum before division preserves fractional parts."
+  ],
+  [
+    "Counts & statistics",
+    "Predict the average of these three integers.",
+    [
+      "int[] numbers = {2, 3, 5};<br>int sum = 10;<br>double average = (double) sum / numbers.length;<br>// approximately ",
+      ""
+    ],
+    [
+      "3.3333"
+    ],
+    [
+      "3.0",
+      "10.0"
+    ],
+    "The sum ten is divided by three using floating-point division."
+  ],
+  [
+    "Counts & statistics",
+    "Initialise the largest value from the array.",
+    [
+      "int largest = list[",
+      "];"
+    ],
+    [
+      "0"
+    ],
+    [
+      "list.length",
+      "-1"
+    ],
+    "MinMax starts from the first element so negative-only data can be handled correctly."
+  ],
+  [
+    "Counts & statistics",
+    "Update the smallest element found.",
+    [
+      "if (list[index] ",
+      " smallest) {<br>  smallest = list[index];<br>}"
+    ],
+    [
+      "<"
+    ],
+    [
+      ">",
+      "=="
+    ],
+    "MinMax replaces smallest only when the current element is lower."
+  ],
+  [
+    "Searching arrays",
+    "Start with the target not yet found.",
+    [
+      "boolean found = ",
+      ";"
+    ],
+    [
+      "false"
+    ],
+    [
+      "true",
+      "\"false\""
+    ],
+    "FindNumberInArray initialises found to false before searching."
+  ],
+  [
+    "Searching arrays",
+    "Continue only while not found AND within the bounds.",
+    [
+      "while (!found ",
+      " index < numbers.length) {<br>  // search the current element<br>}"
+    ],
+    [
+      "&&"
+    ],
+    [
+      "||",
+      "=="
+    ],
+    "Both conditions must hold so the search stops on a match or at the end."
+  ],
+  [
+    "Searching arrays",
+    "Test an element against the search value.",
+    [
+      "if (numbers[index] ",
+      " search) {<br>  found = true;<br>}"
+    ],
+    [
+      "=="
+    ],
+    [
+      "=",
+      "!="
+    ],
+    "Numeric equality identifies a matching array element."
+  ],
+  [
+    "Searching arrays",
+    "Predict the reported location of thirty.",
+    [
+      "int[] numbers = {10, 20, 30, 40, 50};<br>// zero-based location of 30: ",
+      ""
+    ],
+    [
+      "2"
+    ],
+    [
+      "3",
+      "30"
+    ],
+    "FindNumberInArray reports index two for thirty."
+  ],
+  [
+    "Searching arrays",
+    "Increment the occurrence count for a match.",
+    [
+      "if (height[index] == search) {<br>  total = total ",
+      " 1;<br>}"
+    ],
+    [
+      "+"
+    ],
+    [
+      "-",
+      "*"
+    ],
+    "CountNumbersInArray adds one for every matching value."
+  ],
+  [
+    "Searching arrays",
+    "Count the occurrences of sixty-seven.",
+    [
+      "int[] height = {78, 67, 66, 60, 73, 70, 75, 67};<br>// occurrences of 67: ",
+      ""
+    ],
+    [
+      "2"
+    ],
+    [
+      "1",
+      "3"
+    ],
+    "Sixty-seven appears at indices one and seven."
+  ],
+  [
+    "Searching arrays",
+    "Advance the bus position only when no match is found.",
+    [
+      "if (REQUIREDBUS == id[position]) {<br>  found = true;<br>} else {<br>  position",
+      ";<br>}"
+    ],
+    [
+      "++"
+    ],
+    [
+      "--",
+      "=="
+    ],
+    "Bus advances on a mismatch and keeps position at the matching record."
+  ],
+  [
+    "Tables & parallel data",
+    "Declare the two-dimensional marks table.",
+    [
+      "int",
+      " marks = new int[5][3];"
+    ],
+    [
+      "[][]"
+    ],
+    [
+      "[]",
+      "()"
+    ],
+    "Results uses a two-dimensional array: one row per student and one column per module."
+  ],
+  [
+    "Tables & parallel data",
+    "Read a student/module mark.",
+    [
+      "marks[row][",
+      "] = keyboard.nextInt();"
+    ],
+    [
+      "column"
+    ],
+    [
+      "NOOFMODULES",
+      "NOOFSTUDENTS"
+    ],
+    "Results uses row for the student and column for the module."
+  ],
+  [
+    "Tables & parallel data",
+    "Calculate a student average across three modules.",
+    [
+      "studentAverage[row] = (double) total / ",
+      ";"
+    ],
+    [
+      "NOOFMODULES"
+    ],
+    [
+      "NOOFSTUDENTS",
+      "row"
+    ],
+    "A student average divides that student’s total by the number of modules."
+  ],
+  [
+    "Tables & parallel data",
+    "Calculate a module average across five students.",
+    [
+      "moduleAverage[column] = (double) total / ",
+      ";"
+    ],
+    [
+      "NOOFSTUDENTS"
+    ],
+    [
+      "NOOFMODULES",
+      "column"
+    ],
+    "A module average divides the column total by the number of students."
+  ],
+  [
+    "Tables & parallel data",
+    "Reset the total before each new student.",
+    [
+      "for (int row = 0; row < NOOFSTUDENTS; row++) {<br>  total = ",
+      ";<br>  // add this student’s marks<br>}"
+    ],
+    [
+      "0"
+    ],
+    [
+      "1",
+      "NOOFSTUDENTS"
+    ],
+    "Results resets the accumulator to keep each student’s calculation independent."
+  ],
+  [
+    "Tables & parallel data",
+    "Link the make and capacity to the matched bus.",
+    [
+      "System.out.println(make[position] + \" \" + capacity[",
+      "]);"
+    ],
+    [
+      "position"
+    ],
+    [
+      "SIZE",
+      "0"
+    ],
+    "The parallel arrays use the same index for details belonging to one bus."
+  ],
+  [
+    "Tables & parallel data",
+    "Apply the strict qualification rule from Commission.",
+    [
+      "if (sales[index] ",
+      " commissionLevel) {<br>  System.out.println(index + 1);<br>}"
+    ],
+    [
+      ">"
+    ],
+    [
+      ">=",
+      "<"
+    ],
+    "Commission requires sales strictly above the computed commission level."
+  ],
+  [
+    "Objects & palindromes",
+    "Declare an array that holds Member references.",
+    [
+      "private ",
+      " memberList;"
+    ],
+    [
+      "Member[]"
+    ],
+    [
+      "Member",
+      "String[]"
+    ],
+    "Membership stores references to Member objects in a Member array."
+  ],
+  [
+    "Objects & palindromes",
+    "Create a new member for one array position.",
+    [
+      "memberList[count] = ",
+      " Member(id, name);"
+    ],
+    [
+      "new"
+    ],
+    [
+      "return",
+      "static"
+    ],
+    "The new expression invokes the Member constructor with the entered details."
+  ],
+  [
+    "Objects & palindromes",
+    "Choose the Member constructor name.",
+    [
+      "public ",
+      "(int number, String name) {<br>  memberNumber = number;<br>  memberName = name;<br>}"
+    ],
+    [
+      "Member"
+    ],
+    [
+      "void",
+      "Membership"
+    ],
+    "A constructor has the same name as its class and no return type."
+  ],
+  [
+    "Objects & palindromes",
+    "Return no matching member when the search fails.",
+    [
+      "Member result = ",
+      ";<br>// set result only on a match<br>return result;"
+    ],
+    [
+      "null"
+    ],
+    [
+      "0",
+      "\"not found\""
+    ],
+    "Membership.findMember returns null if no Member reference was found; TestClub checks for it."
+  ],
+  [
+    "Objects & palindromes",
+    "Choose the text representation method.",
+    [
+      "public String ",
+      "() {<br>  return memberNumber + \" \" + memberName;<br>}"
+    ],
+    [
+      "toString"
+    ],
+    [
+      "getMembershipNumber",
+      "Member"
+    ],
+    "Member and Membership define toString to produce readable text when printed."
+  ],
+  [
+    "Objects & palindromes",
+    "Start palindrome comparison at the final character.",
+    [
+      "int start = 0;<br>int finish = sentenceLength ",
+      " 1;"
+    ],
+    [
+      "-"
+    ],
+    [
+      "+",
+      "*"
+    ],
+    "The last valid character position is sentenceLength - 1."
+  ],
+  [
+    "Objects & palindromes",
+    "Move the palindrome finish index inward.",
+    [
+      "while (start < finish && letter[start] == letter[finish]) {<br>  start++;<br>  finish",
+      ";<br>}"
+    ],
+    [
+      "--"
+    ],
+    [
+      "++",
+      "=="
+    ],
+    "The palindrome test moves the two indices toward each other after matching characters."
+  ]
+];
+const HINTS=["The declaration needs an element type and array brackets.", "The allocated element type must match the declared array type.", "The first position is not numbered one.", "Count the positions from zero.", "The last valid index is one less than the number of elements.", "Array length differs from the String length() method.", "Java initialises primitive array elements automatically.", "Avoid accessing an element at index length.", "Use the changing position, not the array size.", "The array size is one greater than the last index.", "The next position should be closer to zero.", "The endpoint zero must still satisfy the condition.", "Find the starting index before reading its value.", "Printing an array does not remove its elements.", "An odd number does not divide evenly by two.", "The two counts must add up to the array length.", "Use the position that changes with the traversal.", "The conversion must happen before dividing the integers.", "The cast prevents truncation to a whole number.", "Use an existing element at a valid starting index.", "A new minimum must be smaller than the old one.", "No element has been checked at the start.", "The search needs both permission to continue and a valid index.", "Compare the values instead of assigning one.", "The first location is zero.", "This is a count of matches, not a sum of matched values.", "Inspect the entire array, including its final element.", "The next comparison should use the following bus record.", "There are two independent indices.", "Use the loop variable selecting a module within the current student.", "The total covers one row across its module columns.", "The total covers one module across all student rows.", "The previous student’s total must not carry over.", "Use the same position across all related arrays.", "Equality does not qualify in the supplied condition.", "Each array element refers to one member object.", "An object must be constructed before its reference can be stored.", "Use the class being created, not the class holding the array.", "The result is an object reference, not a number or text message.", "Choose the standard method used to represent an object as text.", "A length is one greater than the last valid position.", "The index starting on the right must move left."];
+let saved;try{saved=JSON.parse(localStorage.getItem('java-na-lab7-v1'))||{}}catch{saved={}}let studentName=typeof saved.studentName==='string'?saved.studentName.slice(0,80):'';let completedAt=typeof saved.completedAt==='string'?saved.completedAt:null;let attempts=saved.attempts||{};let done=saved.done||{},idx=0,values=[],selected=0,checked=false;
+const $=s=>document.querySelector(s),esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');function persist(){try{localStorage.setItem('java-na-lab7-v1',JSON.stringify({done,studentName,completedAt,attempts}))}catch{}}
+function saveStudentName(){const input=$('#student-name');const name=input.value.trim();if(!name){input.setCustomValidity('Please enter your name.');input.reportValidity();return}input.setCustomValidity('');studentName=name.slice(0,80);input.value=studentName;persist();$('#name-status').textContent='Name saved: '+studentName+'. Your progress stays in this browser.';if($('#card').querySelector('.score'))finish()}
+function render(){values=[];selected=0;checked=false;let q=Q[idx];$('#nav').innerHTML=[...new Set(Q.map(x=>x[0]))].map((t,i)=>`<button class="${q[0]===t?'active':''}" ${Q.findIndex(x=>x[0]===t)>unlockedIndex()?'disabled aria-label="Complete earlier exercises to unlock this topic"':''} onclick="go(${Q.findIndex(x=>x[0]===t)})"><span class="topic-number">${String(i+1).padStart(2,'0')}</span><span class="topic-label">${t}</span><span class="topic-progress">${Q.filter((x,j)=>x[0]===t&&done[j]).length}/${Q.filter(x=>x[0]===t).length}</span></button>`).join('');$('#position').textContent=`EXERCISE ${String(idx+1).padStart(2,'0')} / ${Q.length} · ${q[0]}`;$('#count').textContent=`${Object.keys(done).length} completed` ;$('#bar').style.width=Object.keys(done).length/Q.length*100+'%';let code=q[2].map((p,i)=>p.split('<br>').map(esc).join('<br>')+(i<q[3].length?`<button class="slot ${i===0?'focus':''}" data-slot="${i}" aria-label="Answer blank ${i+1}" onclick="selectSlot(${i})">?</button>`:'')).join('');$('#card').innerHTML=`<div class="tag">FILL IN THE CODE</div><h2>${q[1]}</h2><p class="hint">Drag an answer into each blank, or click an answer to place it.</p><div class="code">${code}</div><div class="bank">${[...q[3],...q[4]].sort((a,b)=>a.localeCompare(b)).map(t=>`<button class="token" draggable="true" data-value="${esc(t)}">${esc(t)}</button>`).join('')}</div><div id="feedback" role="status"></div><div class="actions"><button class="secondary" onclick="render()">↺ Reset answer</button><button class="primary" id="submit" onclick="check()">Check answer →</button></div>`;document.querySelectorAll('.token').forEach(b=>{b.onclick=()=>place(b.dataset.value);b.ondragstart=e=>e.dataTransfer.setData('text/plain',b.dataset.value)});document.querySelectorAll('.slot').forEach(b=>{b.ondragover=e=>e.preventDefault();b.ondrop=e=>{e.preventDefault();selectSlot(+b.dataset.slot);place(e.dataTransfer.getData('text/plain'))}})}
+function selectSlot(i){selected=i;document.querySelectorAll('.slot').forEach((b,j)=>b.classList.toggle('focus',j===i))}function place(v){if(checked||![...Q[idx][3],...Q[idx][4]].includes(v))return;values[selected]=v;document.querySelectorAll('.slot')[selected].textContent=v;let next=Q[idx][3].findIndex((_,i)=>values[i]===undefined);selectSlot(next<0?selected:next)}function unlockedIndex(){const next=Q.findIndex((_,i)=>!done[i]);return next<0?Q.length-1:next}function go(i){idx=Math.max(0,Math.min(i,unlockedIndex()));render()}
+function check(){if(checked){if(idx===Q.length-1)finish();else go(idx+1);return}let q=Q[idx],f=$('#feedback');f.className='feedback';if(values.filter(x=>x!==undefined).length<q[3].length){f.textContent='Fill each blank before checking your answer.';return}if(!q[3].every((v,i)=>values[i]===v)){f.style.background='#fff3e3';attempts[idx]=(attempts[idx]||0)+1;persist();f.textContent=attempts[idx]>=2?'Not quite—try again. Hint: '+HINTS[idx]:'Not quite—try again.';return}checked=true;done[idx]=true;if(Q.every((_,i)=>done[i])&&!completedAt)completedAt=new Date().toISOString();persist();f.style.background='#e9f3ff';f.textContent='✓ Correct! You can move on to the next exercise.';$('#submit').textContent=idx===Q.length-1?'See results →':'Next exercise →';document.querySelectorAll('#nav .topic-progress').forEach((node,i)=>node.textContent=topicRows()[i].completed+'/'+topicRows()[i].total);$('#count').textContent=Object.keys(done).length+' completed';$('#bar').style.width=Object.keys(done).length/Q.length*100+'%'}function completedCount(){return Q.filter((_,i)=>done[i]).length}
+function topicRows(){return [...new Set(Q.map(q=>q[0]))].map(topic=>({topic,total:Q.filter(q=>q[0]===topic).length,completed:Q.filter((q,i)=>q[0]===topic&&done[i]).length}))}
+function downloadResults(){
+ const input=$('#student-name');if(!input.value.trim()){input.setCustomValidity('Enter your name before downloading your results.');input.reportValidity();input.focus();return}saveStudentName();
+ const total=completedCount(),complete=total===Q.length,now=new Date(),dateOptions={dateStyle:'long',timeStyle:'short',timeZone:'Europe/Dublin'};
+ const canvas=document.createElement('canvas');canvas.width=1240;canvas.height=1754;const c=canvas.getContext('2d');c.fillStyle='#ffffff';c.fillRect(0,0,1240,1754);c.fillStyle='#102b52';c.fillRect(0,0,1240,230);c.fillStyle='#ffffff';c.font='bold 46px Arial';c.fillText('BIFE / Java Lab 7',80,106);c.font='28px Arial';c.fillText('NA Software Development 2026–27 · Teacher: Ciara',80,165);
+ c.fillStyle='#20324c';c.font='bold 42px Arial';c.fillText(complete?'Practice completion report':'Practice progress report',80,325);c.font='24px Arial';c.fillText('Student name',80,395);c.font='bold 36px Arial';let size=36;while(c.measureText(studentName).width>1080&&size>14)c.font='bold '+(--size)+'px Arial';c.fillText(studentName,80,445);
+ c.fillStyle='#e9f3ff';c.fillRect(80,490,1080,155);c.fillStyle='#1d65b5';c.font='bold 56px Arial';c.fillText(total+' / '+Q.length,110,560);c.font='25px Arial';c.fillText(complete?'All exercises completed successfully':'Exercises completed — practice still in progress',110,610);
+ c.fillStyle='#20324c';c.font='bold 28px Arial';c.fillText('Topic breakdown',80,725);topicRows().forEach((row,i)=>{const y=790+i*66;c.fillStyle=i%2===0?'#f0f5fc':'#ffffff';c.fillRect(80,y-35,1080,60);c.fillStyle='#20324c';c.font='26px Arial';c.fillText(row.topic,105,y);c.fillText(row.completed+' / '+row.total,1010,y)});
+ c.font='23px Arial';c.fillStyle='#526c8c';c.fillText('Report created: '+now.toLocaleString('en-IE',dateOptions)+' (Ireland)',80,1260);if(complete&&completedAt)c.fillText('Completed: '+new Date(completedAt).toLocaleString('en-IE',dateOptions)+' (Ireland)',80,1303);
+ c.font='22px Arial';c.fillText('Practice allows retries. This records completion, not a graded test score.',80,1390);c.fillText('Generated from progress saved in the student’s browser.',80,1430);c.fillText('Upload this PDF to your assignment in Microsoft Teams.',80,1515);
+ const binary=atob(canvas.toDataURL('image/jpeg',0.95).split(',')[1]);const jpeg=Uint8Array.from(binary,ch=>ch.charCodeAt(0));const pdf=makeReportPdf(jpeg,canvas.width,canvas.height);const url=URL.createObjectURL(new Blob([pdf],{type:'application/pdf'}));const a=document.createElement('a');a.href=url;a.download='BIFE-NA-Java-Lab7-'+studentName.normalize('NFKD').replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60)+'-results.pdf';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);$('#download-status').textContent='Your PDF has been downloaded. Upload it to your assignment in Teams.';
+}
+function makeReportPdf(jpeg,width,height){const encoder=new TextEncoder(),parts=[],offsets=[0];let length=0;const add=data=>{const bytes=typeof data==='string'?encoder.encode(data):data;parts.push(bytes);length+=bytes.length};const object=(id,body)=>{offsets[id]=length;add(id+' 0 obj\n'+body+'\nendobj\n')};add('%PDF-1.4\n');object(1,'<< /Type /Catalog /Pages 2 0 R >>');object(2,'<< /Type /Pages /Kids [3 0 R] /Count 1 >>');object(3,'<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /XObject << /Report 4 0 R >> >> /Contents 5 0 R >>');offsets[4]=length;add('4 0 obj\n<< /Type /XObject /Subtype /Image /Width '+width+' /Height '+height+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+jpeg.length+' >>\nstream\n');add(jpeg);add('\nendstream\nendobj\n');const content='q\n595.28 0 0 841.89 0 0 cm\n/Report Do\nQ\n';object(5,'<< /Length '+encoder.encode(content).length+' >>\nstream\n'+content+'endstream');const xref=length;add('xref\n0 6\n0000000000 65535 f \n');for(let i=1;i<=5;i++)add(String(offsets[i]).padStart(10,'0')+' 00000 n \n');add('trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n'+xref+'\n%%EOF');const result=new Uint8Array(length);let position=0;for(const part of parts){result.set(part,position);position+=part.length}return result}
+function answerReview(){if(completedCount()!==Q.length)return '';return '<h2>Answers and explanations</h2><p class="hint">You have completed all exercises. Open any question to review it.</p>'+Q.map((q,i)=>'<details class="review"><summary>'+esc((i+1)+'. '+q[1])+'</summary><div class="code">'+q[2].map((part,j)=>part.split('<br>').map(esc).join('<br>')+(j<q[3].length?'<strong>'+esc(q[3][j])+'</strong>':'')).join('')+'</div><p>'+esc(q[5])+'</p></details>').join('')}
+function finish(){$('#card').innerHTML=`<div class="tag">YOUR PRACTICE SUMMARY</div><h2>${studentName?"Well done, "+esc(studentName)+"!":"Look how far you’ve come."}</h2><p>BIFE · Java Lab 7 · Teacher: Ciara</p><div class="score">${completedCount()} / ${Q.length}</div><p>Exercises completed. Answer each question correctly to unlock the next one.</p><button class="primary" onclick="downloadResults()">Download results (PDF) ↓</button><p id="download-status" role="status" class="hint">Enter your name above, download your report, then upload the PDF to your assignment in Teams.</p><p class="hint">${completedCount()===Q.length?"All exercises completed. Well done!":"Your report will show your progress so far. Complete all "+Q.length+" exercises for a full completion report."}</p>${completedCount()===Q.length?answerReview():''}<button class="secondary" onclick="go(unlockedIndex())">${completedCount()===Q.length?"Practise again →":"Continue quiz →"}</button> <button class="secondary" onclick="done={};attempts={};completedAt=null;persist();go(0)">Clear progress</button>`}$('#student-name').value=studentName;$('#student-name').oninput=()=>$('#student-name').setCustomValidity('');if(studentName)$('#name-status').textContent='Welcome back, '+studentName+'. Your progress stays in this browser.';idx=unlockedIndex();render();
+</script></html>
